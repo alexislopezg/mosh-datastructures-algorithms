@@ -1,4 +1,4 @@
-package com.company;
+package DataStructures;
 
 import java.util.NoSuchElementException;
 

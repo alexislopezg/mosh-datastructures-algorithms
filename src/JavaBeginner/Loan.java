@@ -19,9 +19,11 @@ public class Loan {
     final byte PERCENT = 100;
 
     public double calculateMortgage() {
-        var numerator = getMonthlyInterest() * Math.pow((1 + getMonthlyInterest()), getNumberOfPayments());
-        var denominator = Math.pow((1 + getMonthlyInterest()), getNumberOfPayments()) - 1;
-        return (principal * numerator) / denominator;
+        double mortgage = principal
+                * (getMonthlyInterest() * Math.pow((1 + getMonthlyInterest()), getNumberOfPayments()))
+                / (Math.pow((1 + getMonthlyInterest()), getNumberOfPayments()) - 1);
+
+        return mortgage;
     }
 
     public double getRemainingBalance(short paymentsMade) {

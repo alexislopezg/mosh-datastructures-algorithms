@@ -42,7 +42,7 @@ public class Main {
     }
 
     private static void printSection(String section) {
-        System.out.println(section.toUpperCase());
+        System.out.println(section);
 
         for (int letter = 0; letter < section.length(); letter++) {
             if (section.length() - 1 == letter)

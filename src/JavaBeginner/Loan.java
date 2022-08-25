@@ -24,6 +24,14 @@ public class Loan {
         return (principal * numerator) / denominator;
     }
 
+    public double getRemainingBalance(short paymentsMade) {
+        double balance = principal
+                * (Math.pow(1 + getMonthlyInterest(), getNumberOfPayments()) - Math.pow(1 + getMonthlyInterest(), paymentsMade))
+                / (Math.pow(1 + getMonthlyInterest(), getNumberOfPayments()) - 1);
+
+        return balance;
+    }
+
     public float getMonthlyInterest() {
         return (interest / PERCENT) / MONTHS_IN_YEAR;
     }

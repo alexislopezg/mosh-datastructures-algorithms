@@ -16,10 +16,7 @@ public class Main {
         var years = (byte) readNumber("Period (Years)", 1, 30);
 
         var loan = new Loan(principal, annualInterest, years);
-        System.out.println("You'll be paying: " + NumberFormat.getCurrencyInstance().format(loan.calculateMortgage()));
-        System.out.println("Annual Interest rate: " + NumberFormat.getPercentInstance().format(annualInterest));
-        System.out.println("Monthly Interest rate: " + NumberFormat.getPercentInstance().format(loan.getMonthlyInterest()));
-        System.out.println("Number of payments: " + loan.getNumberOfPayments());
+        System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(loan.calculateMortgage()));
     }
 
     private static double readNumber(String prompt, double min, double max) {

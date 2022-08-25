@@ -11,12 +11,8 @@ public class Main {
     //Mortgage - total
 
     public static void main(String[] args) {
-        var scanner = new Scanner(System.in);
-
         var principal = (int) readNumber("Principal", 1000, 1_000_000);
-
         var annualInterest = (float) readNumber("Annual Interest Rate", 1, 30);
-
         var years = (byte) readNumber("Period (Years)", 1, 30);
 
         var loan = new Loan(principal, annualInterest, years);
@@ -24,7 +20,6 @@ public class Main {
         System.out.println("Annual Interest rate: " + NumberFormat.getPercentInstance().format(annualInterest));
         System.out.println("Monthly Interest rate: " + NumberFormat.getPercentInstance().format(loan.getMonthlyInterest()));
         System.out.println("Number of payments: " + loan.getNumberOfPayments());
-
     }
 
     private static double readNumber(String prompt, double min, double max) {

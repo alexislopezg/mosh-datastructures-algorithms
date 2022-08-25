@@ -13,19 +13,30 @@ public class Main {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
 
-        System.out.print("Insert Principal: ");
-        var principal = scanner.nextInt();
+        var principal = (int) readNumber("Principal", 1000, 1_000_000);
 
-        System.out.print("Insert Anual Interest Rate: ");
-        var annualInterest = scanner.nextFloat();
+        var annualInterest = (float) readNumber("Annual Interest Rate", 1, 30);
 
-        System.out.print("Insert how many years you'll be paying the loan: ");
-        var years = scanner.nextByte();
+        var years = (byte) readNumber("Period (Years)", 1, 30);
 
         var loan = new Loan(principal, annualInterest, years);
         System.out.println("You'll be paying: " + NumberFormat.getCurrencyInstance().format(loan.calculateMortgage()));
         System.out.println("Annual Interest rate: " + NumberFormat.getPercentInstance().format(annualInterest));
         System.out.println("Monthly Interest rate: " + NumberFormat.getPercentInstance().format(loan.getMonthlyInterest()));
         System.out.println("Number of payments: " + loan.getNumberOfPayments());
+
+    }
+
+    private static double readNumber(String prompt, double min, double max) {
+        var scanner = new Scanner(System.in);
+        double value;
+        while (true) {
+            System.out.println(prompt + ": ");
+            value = scanner.nextDouble();
+            if (value >= min && value <= max)
+                break;
+            System.out.println("Enter a value between " + min + " and " + max);
+        }
+        return value;
     }
 }
